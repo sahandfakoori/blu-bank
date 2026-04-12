@@ -1,4 +1,10 @@
+import 'package:blubank/core/widgets/home_draggble_scrollabe_sheet.dart';
+import 'package:blubank/features/presentation/bloc/home_bloc.dart';
+import 'package:blubank/features/presentation/bloc/home_event.dart';
+import 'package:blubank/features/presentation/bloc/home_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,141 +21,218 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff0f3768),
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        if (state is HideState) {
+          return Scaffold(
+            backgroundColor: Color(0xff0f3768),
+            body: Container(
+              decoration: BoxDecoration(
+                color: Colors.lightBlueAccent.withValues(alpha: 0.7),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Color(0xff1659a8),
+                    Color(0xff0f376a),
+                    Color(0xff0f376a),
+                    Color(0xff0f376a),
+                  ],
+                  tileMode: TileMode.mirror,
+                ),
+              ),
+              child: Stack(
                 children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(24),
-                        child: Container(
-                          height: 28,
-                          width: 28,
-                          decoration: BoxDecoration(
-                            color: Color(0xffdddddd),
-                            shape: BoxShape.circle,
+                  SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () {},
+                                borderRadius: BorderRadius.circular(24),
+                                child: Container(
+                                  height: 22,
+                                  width: 22,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffdddddd),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.question_mark,
+                                    size: 15,
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Icon(
+                                Icons.doorbell_outlined,
+                                size: 26,
+                                color: Color(0xffe1e0e0),
+                              ),
+                              const SizedBox(width: 10),
+                              Icon(
+                                Icons.search,
+                                size: 26,
+                                color: Color(0xffe1e0e0),
+                              ),
+                              const Spacer(),
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  height: 22,
+                                  width: 22,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.person,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          child: Icon(
-                            Icons.question_mark,
-                            size: 20,
-                            color: Colors.black45,
+                          const SizedBox(height: 30),
+                          SizedBox(
+                            height: 38,
+                            child: Text(
+                              state.isHide ? '*********' : '4,009,500,145 ریال',
+                              textDirection: .rtl,
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                                fontWeight: .w600,
+                                fontFamily: 'Yekan',
+                              ),
+                            ),
                           ),
-                        ),
+                          Row(
+                            mainAxisAlignment: .center,
+                            children: [
+                              Transform.rotate(
+                                angle: 90 * 3.1415926535 / 180,
+                                child: Icon(
+                                  Icons.arrow_forward_ios_outlined,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'موجودی',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    // fontWeight: .w600,
+                                    fontFamily: 'Yekan',
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () => context.read<HomeBloc>().add(
+                                  HideBalance(state.isHide),
+                                ),
+                                child: Icon(
+                                  state.isHide
+                                      ? Icons.not_interested_rounded
+                                      : Icons.remove_red_eye_outlined,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              HomeIconWidget(
+                                icon: Icons.ssid_chart_rounded,
+                                text: 'گزارش مالی',
+                                color_primary: Color(0xff3b5d78),
+                                color_secondary: Color(0xffffffff),
+                              ),
+                              HomeIconWidget(
+                                icon: Icons.sports_soccer_outlined,
+                                text: 'باکس',
+                                color_primary: Color(0xff3b5d78),
+                                color_secondary: Color(0xffffffff),
+                              ),
+                              HomeIconWidget(
+                                icon: Icons.add,
+                                text: 'شارژ حساب',
+                                color_primary: Color(0xffffffff),
+                                color_secondary: Color(0xff3b5d78),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 28,
-                          width: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.person,
-                            size: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Image(
-                    image: AssetImage('assets/icons/scanner_icon.png'),
-                    height: 124,
-                    width: 124,
-                    colorBlendMode: BlendMode.srcIn,
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'اننقال و دریافت با کد QR',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
                     ),
-                    textDirection: TextDirection.rtl,
                   ),
-                  const SizedBox(height: 16),
-                  const Icon(
-                    Icons.keyboard_double_arrow_down_outlined,
-                    color: Colors.white,
-                    size: 28,
+                  HomeDraggableScrollableSheet(
+                    min: 0.65,
+                    initial: 0.65,
+                    max: 1,
                   ),
                 ],
               ),
             ),
-          ),
-          DraggableScrollableSheet(
-            initialChildSize: 0.65,
-            minChildSize: 0.65,
-            maxChildSize: 1,
-            builder: (BuildContext context, ScrollController scrollController) {
-              return Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xff1b1f28),
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Container(
-                        width: 40,      // عرض خط
-                        height: 4,      // ضخامت خط
-                        decoration: BoxDecoration(
-                          color: Colors.grey[400],
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        controller: scrollController,
-                        itemCount: 51,
-                        itemBuilder: (BuildContext context, int index) {
-                          if (index == 0) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                              height: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Colors.red,
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'تبلیغات',
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
-                                ),
-                              ),
-                            );
-                          }
+          );
+        } else {
+          return SizedBox.shrink();
+        }
+      },
+    );
+  }
+}
 
-                          return ListTile(
-                            title: Text(
-                              'Item ${index - 1}',
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
+class HomeIconWidget extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final Color color_primary;
+  final Color color_secondary;
+
+  const HomeIconWidget({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.color_primary,
+    required this.color_secondary,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: color_primary,
+            shape: BoxShape.circle,
           ),
-        ],
-      ),
+          child: Padding(
+            padding: const EdgeInsetsGeometry.all(10),
+            child: Icon(icon, size: 36, color: color_secondary),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          text,
+          style: TextStyle(
+            color: Color(0xfff3f2f2),
+            fontWeight: .w400,
+            fontSize: 16,
+            fontFamily: 'Yekan',
+          ),
+        ),
+      ],
     );
   }
 }

@@ -11,7 +11,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(child: navigationShell),
-      bottomSheet: AppNavigationBar(
+      bottomNavigationBar: AppNavigationBar(
           navigationShell: navigationShell),
     );
   }

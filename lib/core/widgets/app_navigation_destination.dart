@@ -18,11 +18,11 @@ class AppNavigationDestination extends StatelessWidget {
         icon,
         height: 30,
         width: 34,
-        colorFilter: ColorFilter.mode(Color(0xFFFFFFFF), BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(Color(0xffa4b2bc), BlendMode.srcIn),
       ),
       selectedIcon: SvgPicture.asset(
         icon,
-        colorFilter: ColorFilter.mode(Color(0xFF74abeb), BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(Color(0xFF75abeb), BlendMode.srcIn),
         height: 34,
         width: 34,
       ),
