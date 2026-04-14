@@ -1,7 +1,9 @@
 import 'package:blubank/core/router/app_routes.dart';
+import 'package:blubank/core/widgets/icon_widget.dart';
 import 'package:blubank/features/presentation/screens/deposit_screen.dart';
 import 'package:blubank/features/presentation/widgets/card_recipient_item.dart';
 import 'package:blubank/features/presentation/widgets/contact.dart';
+import 'package:blubank/features/presentation/widgets/float_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,24 +33,20 @@ class _DestinationsScreenState extends State<DestinationsScreen> {
   }
 
   void _onScroll() {
-    // تشخیص جهت اسکرول
     if (_scrollController.offset > _lastScrollOffset &&
         _scrollController.offset > 100) {
-      // اسکرول به سمت پایین و کمی پایین رفته‌ایم
       if (_isButtonVisible) {
         setState(() {
-          _isButtonVisible = false; // دکمه را مخفی کن
+          _isButtonVisible = false;
         });
       }
     } else if (_scrollController.offset < _lastScrollOffset) {
-      // اسکرول به سمت بالا
       if (!_isButtonVisible) {
         setState(() {
-          _isButtonVisible = true; // دکمه را نمایش بده
+          _isButtonVisible = true;
         });
       }
     }
-    // به‌روزرسانی موقعیت قبلی اسکرول
     _lastScrollOffset = _scrollController.offset;
   }
 
@@ -57,31 +55,7 @@ class _DestinationsScreenState extends State<DestinationsScreen> {
     return Scaffold(
       backgroundColor: Color(0xff1b1f28),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButton: SizedBox(
-        height: 48,
-        child: AnimatedOpacity(
-          opacity: _isButtonVisible ? 1.0 : 0.0,
-          duration: const Duration(milliseconds: 300),
-          child: Visibility(
-            visible: _isButtonVisible,
-            child: FloatingActionButton.extended(
-              extendedPadding: const EdgeInsets.symmetric(horizontal: 24),
-              label: Text(
-                '+ انتقال جدید',
-                textDirection: .rtl,
-                style: TextStyle(fontFamily: 'Yekan', color: Color(0xff1b1f28)),
-              ),
-              onPressed: () {
-                context.pushNamed(AppRoutes.deposit.name);
-              },
-              backgroundColor: Color(0xFF75abeb),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32),
-              ),
-            ),
-          ),
-        ),
-      ),
+      floatingActionButton: FloatButton(isButtonVisible: _isButtonVisible),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: Padding(
@@ -92,22 +66,12 @@ class _DestinationsScreenState extends State<DestinationsScreen> {
               children: [
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      borderRadius: BorderRadius.circular(24),
-                      child: Container(
-                        height: 22,
-                        width: 22,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF75abeb),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.question_mark,
-                          size: 15,
-                          color: Colors.black45,
-                        ),
-                      ),
+                    IconWidget(
+                      icon: Icons.question_mark,
+                      size: 15,
+                      h: 22,
+                      w: 22,
+                      color: Color(0xFF75abeb),
                     ),
                     const SizedBox(width: 10),
                     Icon(
@@ -118,21 +82,12 @@ class _DestinationsScreenState extends State<DestinationsScreen> {
                     const SizedBox(width: 10),
                     Icon(Icons.search, size: 26, color: Color(0xFF75abeb)),
                     const Spacer(),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        height: 22,
-                        width: 22,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF75abeb),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.person,
-                          size: 20,
-                          color: Colors.white70,
-                        ),
-                      ),
+                    IconWidget(
+                      icon: Icons.person,
+                      size: 20,
+                      h: 22,
+                      w: 22,
+                      color: Color(0xFF75abeb),
                     ),
                   ],
                 ),

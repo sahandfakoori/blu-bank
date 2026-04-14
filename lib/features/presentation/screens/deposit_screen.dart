@@ -1,3 +1,4 @@
+import 'package:blubank/core/widgets/icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -13,13 +14,6 @@ class _DepositScreenState extends State<DepositScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-
-    @override
-    void dispose() {
-      controller.dispose();
-      super.dispose();
-    }
-
     return Scaffold(
       backgroundColor: Color(0xff1b1f28),
       appBar: AppBar(
@@ -30,19 +24,7 @@ class _DepositScreenState extends State<DepositScreen> {
         ),
         actionsPadding: const EdgeInsetsGeometry.symmetric(horizontal: 12),
         actions: [
-          InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(24),
-            child: Container(
-              height: 22,
-              width: 22,
-              decoration: BoxDecoration(
-                color: Color(0xFF75abeb),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(Icons.question_mark, size: 15, color: Colors.black45),
-            ),
-          ),
+          IconWidget(icon: Icons.question_mark , h: 22, w: 22 , size: 15,color: Color(0xFF75abeb),),
           const Spacer(),
           Text(
             'انتقال',

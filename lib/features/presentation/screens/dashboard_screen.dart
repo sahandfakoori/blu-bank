@@ -1,4 +1,5 @@
-import 'package:blubank/core/widgets/dashboard_draggable_scrollable_sheet.dart';
+import 'package:blubank/core/widgets/icon_widget.dart';
+import 'package:blubank/features/presentation/widgets/dashboard_draggable_scrollable_sheet.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -32,40 +33,9 @@ class DashboardScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        InkWell(
-                          onTap: () {},
-                          borderRadius: BorderRadius.circular(24),
-                          child: Container(
-                            height: 28,
-                            width: 28,
-                            decoration: BoxDecoration(
-                              color: Color(0xffdddddd),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.question_mark,
-                              size: 20,
-                              color: Colors.black45,
-                            ),
-                          ),
-                        ),
+                        IconWidget(icon: Icons.question_mark),
                         const Spacer(),
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 28,
-                            width: 28,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.person,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                        IconWidget(icon: Icons.person_outlined),
                       ],
                     ),
                     const SizedBox(height: 20),

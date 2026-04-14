@@ -1,4 +1,5 @@
-import 'package:blubank/core/widgets/home_draggble_scrollabe_sheet.dart';
+import 'package:blubank/features/presentation/widgets/home_draggble_scrollabe_sheet.dart';
+import 'package:blubank/core/widgets/icon_widget.dart';
 import 'package:blubank/features/presentation/bloc/home_bloc.dart';
 import 'package:blubank/features/presentation/bloc/home_event.dart';
 import 'package:blubank/features/presentation/bloc/home_state.dart';
@@ -50,26 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Row(
                             children: [
-                              InkWell(
-                                onTap: () {},
-                                borderRadius: BorderRadius.circular(24),
-                                child: Container(
-                                  height: 22,
-                                  width: 22,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffdddddd),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Icon(
-                                    Icons.question_mark,
-                                    size: 15,
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ),
+                              IconWidget(icon: Icons.question_mark,size: 15 ,h: 22 , w: 22,),
                               const SizedBox(width: 10),
                               Icon(
-                                Icons.doorbell_outlined,
+                                Icons.notifications,
                                 size: 26,
                                 color: Color(0xffe1e0e0),
                               ),
@@ -80,22 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Color(0xffe1e0e0),
                               ),
                               const Spacer(),
-                              InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  height: 22,
-                                  width: 22,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Icon(
-                                    Icons.person,
-                                    size: 20,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
+                              IconWidget(icon: Icons.person, h: 22, w: 22, size: 20,),
                             ],
                           ),
                           const SizedBox(height: 30),

@@ -54,20 +54,9 @@ class HomeDraggableScrollableSheet extends StatelessWidget {
                         controller: scrollController,
                         itemCount: 51,
                         itemBuilder: (BuildContext context, int index) {
-                          // if (index == 0) {
-                          //   return AppAds();
-                          // }
-                          final multiplier = random.nextInt(90) + 1; // عددی بین 1 تا 90
-
-                          // محاسبه عدد نهایی
+                          final multiplier = random.nextInt(90) + 1;
                           final rawAmount = multiplier * 100000;
-
-                          // فرمت‌بندی عدد با کاما
                           final amount = NumberFormat('#,###').format(rawAmount);
-                          // final amount = NumberFormat(
-                          //   '#,###',
-                          // ).format(rawAmount);
-
                           final type =
                               HistoryTypeEnum.values[random.nextInt(
                                 HistoryTypeEnum.values.length,
