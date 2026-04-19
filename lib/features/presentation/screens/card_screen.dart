@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:blubank/core/widgets/icon_widget.dart';
 import 'package:blubank/features/presentation/widgets/card_draggable_scallabe_sheet.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,29 @@ class CardScreen extends StatefulWidget {
   State<CardScreen> createState() => _CardScreenState();
 }
 
-class _CardScreenState extends State<CardScreen> {
+class _CardScreenState extends State<CardScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  bool isFront = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 600),
+      vsync: this,
+    );
+  }
+
+  void flipCard() {
+    if (isFront) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
+    isFront = !isFront;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,13 +62,28 @@ class _CardScreenState extends State<CardScreen> {
               ],
             ),
           ),
-          Column(
-            children: [
-              const SizedBox(height: 90),
-              Center(
-                child: Image.asset('assets/images/card1.jpg', height: 430),
-              ),
-            ],
+
+          GestureDetector(
+            onTap: flipCard,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                final angle = _controller.value * pi;
+                final isBack = angle > pi / 2;
+
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationY(angle),
+                  child: isBack
+                      ? Transform(
+                          alignment: Alignment.center,
+                          transform: Matrix4.rotationY(pi),
+                          child: backSide(),
+                        )
+                      : frontSide(),
+                );
+              },
+            ),
           ),
 
           CardDraggableScallableSheet(min: 0.30, initial: 0.65, max: 1),
@@ -52,4 +91,22 @@ class _CardScreenState extends State<CardScreen> {
       ),
     );
   }
+
+  Widget frontSide() => Column(
+    children: [
+      const SizedBox(height: 90),
+      Center(
+        child: Image.asset('assets/images/card1.jpg', height: 430),
+      ),
+    ],
+  );
+
+  Widget backSide() => Column(
+    children: [
+      const SizedBox(height: 90),
+      Center(
+        child: Image.asset('assets/images/card2.jpg', height: 430),
+      ),
+    ],
+  );
 }
