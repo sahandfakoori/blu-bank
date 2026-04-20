@@ -10,9 +10,9 @@ It replicates the visual layout and interactions of a modern banking app — foc
 
 Here are some preview images of the interface:
 
-| Home Screen              | Transactions                         | Dashboard                           | Card                            | Setting                         |
-|--------------------------|--------------------------------------|-------------------------------------|---------------------------------|---------------------------------|
-| ![Home](images/home.jpg) | ![Transactions](/images/deposit.jpg) | ![Dashboard](/images/dashboard.jpg) | ![Card](/images/card.jpg)       | ![Setting](/images/setting.jpg) |
+| Home Screen              | Transactions                         | Dashboard                           | Card                            | Setting                         | Video                           |
+|--------------------------|--------------------------------------|-------------------------------------|---------------------------------|---------------------------------|---------------------------------|
+| ![Home](images/home.jpg) | ![Transactions](/images/deposit.jpg) | ![Dashboard](/images/dashboard.jpg) | ![Card](/images/card.jpg)       | ![Setting](/images/setting.jpg) | ![Video](/images/Transform.mp4) |
 
 
 ---
