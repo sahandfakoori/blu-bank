@@ -46,4 +46,3 @@ It is **not affiliated with Blue Bank** or any financial institution.
 ## ✨ Author
 
 Created by [sahandfakoori](https://github.com/sahandfakoori).  
-Feel free to fork, star, and use this as reference for your own UI experiments!
