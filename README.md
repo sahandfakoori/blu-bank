@@ -1,17 +1,57 @@
-# blubank
+# BlueBank UI Clone
 
-A new Flutter project.
+This project is a **UI-only** clone inspired by the design and style of the *Blue Bank* mobile application.  
+It replicates the visual layout and interactions of a modern banking app — focusing purely on design and user experience.  
+👉 **Please note:** This is **not** a real banking or financial application. It does not handle real money transactions, transfers, or account operations.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🖼️ Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+Here are some preview images of the interface:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+| Home Screen              | Transactions                         | Dashboard                           | Card                            | Setting                         |
+|--------------------------|--------------------------------------|-------------------------------------|---------------------------------|---------------------------------|
+| ![Home](images/home.jpg) | ![Transactions](/images/deposit.jpg) | ![Dashboard](/images/dashboard.jpg) | ![Card](/images/card.jpg)       | ![Setting](/images/setting.jpg) |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+---
+
+## 💡 Features
+
+- Modern and minimal design inspired by Blue Bank.
+- Custom icons and color palette.
+- Built for UI demonstration, prototyping, and learning purposes.
+- Works fully offline — no backend integration.
+
+---
+
+## 🛠️ Tech Stack
+
+Mention the frameworks or tools you used here, for example:
+
+- Flutter 
+- Dart 
+- Custom components and animations
+
+---
+
+## ⚠️ Disclaimer
+
+This project is **for educational and design demonstration only**.  
+It is **not affiliated with Blue Bank** or any financial institution.
+
+---
+
+## 📱 Demo
+
+![Demo GIF](/images/demo.gif)
+
+(If you have a demo GIF showing navigation or transitions, include it here.)
+
+---
+
+## ✨ Author
+
+Created by [Your Name](https://github.com/yourusername).  
+Feel free to fork, star, and use this as reference for your own UI experiments!

@@ -60,7 +60,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    '09109591393',
+                    '09120001122',
                     style: TextStyle(
                       color: Color(0xffa5b3be),
                       fontWeight: FontWeight.w600,

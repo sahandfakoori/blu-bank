@@ -216,6 +216,7 @@ class SettingsItems extends StatelessWidget {
             ),
             Text(
               subText,
+              textDirection: .rtl,
               style: TextStyle(
                 fontFamily: 'Yekan',
                 color: Color(0xffa1b2ba),
