@@ -43,15 +43,7 @@ It is **not affiliated with Blue Bank** or any financial institution.
 
 ---
 
-## 📱 Demo
-
-![Demo GIF](/images/demo.gif)
-
-(If you have a demo GIF showing navigation or transitions, include it here.)
-
----
-
 ## ✨ Author
 
-Created by [Your Name](https://github.com/yourusername).  
+Created by [sahandfakoori](https://github.com/sahandfakoori).  
 Feel free to fork, star, and use this as reference for your own UI experiments!
